@@ -7,12 +7,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.a3e_commerce.model.Product
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.main.*
 
 
 class MainActivity : AppCompatActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
+            setSupportActionBar(toolbar)
 
             val products = arrayListOf<Product>()
             for ( i in 0..10){
