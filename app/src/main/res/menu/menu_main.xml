@@ -2,9 +2,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.a3e_commerce.MainActivity">
+    <group android:checkableBehavior="single">
+
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_home"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="Home"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_hoodie"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="9obiya"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_socks"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="t9ichrat"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_jeans"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="srwal jhin"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_shoes"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="sbibito"
+        app:showAsAction="never" />
+        <item
+            android:id="@+id/action_settings"
+            android:orderInCategory="100"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="@string/action_settings"
+            app:showAsAction="never" />
+
+    </group>
 </menu>
