@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
 
             val products = arrayListOf<Product>()
             for ( i in 0..10){
-                products.add(Product("hoodie","https://box.black/wp-content/uploads/2019/05/hoodie-with-zipper.jpg",39.99))
+                products.add(Product("hoodie #$i","https://box.black/wp-content/uploads/2019/05/hoodie-with-zipper.jpg",39.99))
             }
 
             recycler_view.apply {
