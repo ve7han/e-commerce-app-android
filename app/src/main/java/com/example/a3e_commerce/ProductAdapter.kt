@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a3e_commerce.model.Product
 import com.squareup.picasso.Picasso
 
-class ProductAdapter (private val products:ArrayList<Product>): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter (private val products:List<Product>): RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ProductAdapter.ViewHolder, position: Int) {
         val product = products[position]

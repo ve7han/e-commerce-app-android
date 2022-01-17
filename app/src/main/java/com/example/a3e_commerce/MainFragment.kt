@@ -1,13 +1,18 @@
 package com.example.a3e_commerce
 
 import android.os.Bundle
+import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.a3e_commerce.model.Product
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_main.view.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
+import java.net.URL
 
 class MainFragment: Fragment() {
     override fun onCreateView(
@@ -16,15 +21,19 @@ class MainFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
-        val products = arrayListOf<Product>()
-        for ( i in 0..10){
-            products.add(Product("hoodie #$i","https://box.black/wp-content/uploads/2019/05/hoodie-with-zipper.jpg",39.99))
+        doAsync {
+            val json = URL("https://api.jsonbin.io/b/61e5dddfba87c130e3ea2433").readText()
+            uiThread {
+                d("yasalam","json, $json")
+                val products = Gson().fromJson(json,Array<Product>::class.java).toList()
+                root.recycler_view.apply {
+                    layoutManager= GridLayoutManager(activity,2)
+                    adapter= ProductAdapter(products)
+                }
+            }
         }
 
-        root.recycler_view.apply {
-            layoutManager= GridLayoutManager(activity,2)
-            adapter= ProductAdapter(products)
-        }
+
         return root
     }
 }
