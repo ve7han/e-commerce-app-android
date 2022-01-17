@@ -24,11 +24,11 @@ class MainFragment: Fragment() {
         doAsync {
             val json = URL("https://api.jsonbin.io/b/61e5dddfba87c130e3ea2433").readText()
             uiThread {
-                d("yasalam","json, $json")
                 val products = Gson().fromJson(json,Array<Product>::class.java).toList()
                 root.recycler_view.apply {
                     layoutManager= GridLayoutManager(activity,2)
                     adapter= ProductAdapter(products)
+                    root.progressBar.visibility = View.GONE
                 }
             }
         }
