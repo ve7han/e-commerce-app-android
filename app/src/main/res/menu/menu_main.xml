@@ -7,40 +7,42 @@
     <item
         android:id="@+id/action_home"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:icon="@drawable/ic_baseline_home_24"
         android:title="Home"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_jeans"
+        android:orderInCategory="100"
+        android:icon="@drawable/srwal"
+        android:title="srwal jhin"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_hoodie"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:icon="@drawable/hoodie2"
         android:title="9obiya"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_socks"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:icon="@drawable/t9ichrat"
         android:title="t9ichrat"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/action_jeans"
-        android:orderInCategory="100"
-        android:icon="@drawable/ic_baseline_settings_24"
-        android:title="srwal jhin"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/action_shoes"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:icon="@drawable/sbibito"
         android:title="sbibito"
         app:showAsAction="never" />
-        <item
-            android:id="@+id/action_settings"
-            android:orderInCategory="100"
-            android:icon="@drawable/ic_baseline_settings_24"
-            android:title="@string/action_settings"
-            app:showAsAction="never" />
+    <item
+         android:id="@+id/action_settings"
+         android:orderInCategory="100"
+         android:icon="@drawable/ic_baseline_settings_24"
+         android:title="@string/action_settings"
+         app:showAsAction="never" />
 
     </group>
 </menu>

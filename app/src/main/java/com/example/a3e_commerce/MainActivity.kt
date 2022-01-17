@@ -19,11 +19,20 @@ class MainActivity : AppCompatActivity() {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
             setSupportActionBar(toolbar)
+
+            supportFragmentManager.beginTransaction().replace(R.id.frameLayout,MainFragment()).commit()
+
             navigationView.setNavigationItemSelectedListener {
                 it.isChecked=true
                 drawerLayout.closeDrawers()
                 when (it.itemId){
-                    R.id.action_home->d("yasalam","Home Page")
+                    R.id.action_home->{supportFragmentManager.beginTransaction().replace(R.id.frameLayout,MainFragment()).commit()
+                    }
+
+                    R.id.action_jeans-> {
+                        supportFragmentManager.beginTransaction().replace(R.id.frameLayout,JeansFragment()).commit()
+
+                    }
                     R.id.action_hoodie->d("yasalam","Buy Hoodie")
                     R.id.action_shoes->d("yasalam","Buy shoes")
                 }
@@ -34,15 +43,7 @@ class MainActivity : AppCompatActivity() {
                 setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
             }
 
-            val products = arrayListOf<Product>()
-            for ( i in 0..10){
-                products.add(Product("hoodie #$i","https://box.black/wp-content/uploads/2019/05/hoodie-with-zipper.jpg",39.99))
-            }
 
-            recycler_view.apply {
-                layoutManager= GridLayoutManager(this@MainActivity,2)
-                adapter= ProductAdapter(products)
-            }
 
         }
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
