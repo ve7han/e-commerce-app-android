@@ -25,7 +25,7 @@ class MainFragment: Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
         doAsync {
-                val json = URL("https://api.jsonbin.io/b/61e6ff99dbe5d13083280bc7").readText()
+                val json = URL("https://api.jsonbin.io/b/61e71796ba87c130e3eab26e").readText()
             uiThread {
                 val products = Gson().fromJson(json,Array<Product>::class.java).toList()
                 root.recycler_view.apply {
