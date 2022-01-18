@@ -8,10 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.room.Room
+import com.example.a3e_commerce.database.AppDatabase
+import com.example.a3e_commerce.database.ProductDatabase
 import com.example.a3e_commerce.model.Product
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.main.*
+import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +25,21 @@ class MainActivity : AppCompatActivity() {
             setContentView(R.layout.activity_main)
             setSupportActionBar(toolbar)
 
-            supportFragmentManager.beginTransaction().replace(R.id.frameLayout,MainFragment()).commit()
+            doAsync {
+
+                val db = Room.databaseBuilder(
+                    applicationContext,
+                    AppDatabase::class.java, "database-name"
+                ).build()
+
+                db.productDao().insertAll(ProductDatabase(null, "Sriwil ", 20.00))
+                val products = db.productDao().getAll()
+                uiThread {
+                    d("daniel", "products size? ${products.size} ${products[0].title}")
+                }
+
+
+                supportFragmentManager.beginTransaction().replace(R.id.frameLayout,MainFragment()).commit()
 
             navigationView.setNavigationItemSelectedListener {
                 it.isChecked=true
