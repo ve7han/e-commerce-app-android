@@ -20,40 +20,44 @@ import org.jetbrains.anko.uiThread
 
 
 class MainActivity : AppCompatActivity() {
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
-            setSupportActionBar(toolbar)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
 
-            doAsync {
+        doAsync {
 
-                val db = Room.databaseBuilder(
-                    applicationContext,
-                    AppDatabase::class.java, "database-name"
-                ).build()
+            val db = Room.databaseBuilder(
+                applicationContext,
+                AppDatabase::class.java, "database-name"
+            ).build()
 
-                db.productDao().insertAll(ProductDatabase(null, "Sriwil ", 20.00))
-                val products = db.productDao().getAll()
-                uiThread {
-                    d("daniel", "products size? ${products.size} ${products[0].title}")
-                }
+            db.productDao().insertAll(ProductDatabase(null, "Sriwil ", 20.00))
+            val products = db.productDao().getAll()
+            uiThread {
+                d("daniel", "products size? ${products.size} ${products[0].title}")
+            }
+        }
 
-
-                supportFragmentManager.beginTransaction().replace(R.id.frameLayout,MainFragment()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.frameLayout, MainFragment())
+                .commit()
 
             navigationView.setNavigationItemSelectedListener {
-                it.isChecked=true
+                it.isChecked = true
                 drawerLayout.closeDrawers()
-                when (it.itemId){
-                    R.id.action_home->{supportFragmentManager.beginTransaction().replace(R.id.frameLayout,MainFragment()).commit()
+                when (it.itemId) {
+                    R.id.action_home -> {
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.frameLayout, MainFragment()).commit()
                     }
 
-                    R.id.action_jeans-> {
-                        supportFragmentManager.beginTransaction().replace(R.id.frameLayout,JeansFragment()).commit()
+                    R.id.action_jeans -> {
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.frameLayout, JeansFragment()).commit()
 
                     }
-                    R.id.action_hoodie->d("yasalam","Buy Hoodie")
-                    R.id.action_shoes->d("yasalam","Buy shoes")
+                    R.id.action_hoodie -> d("yasalam", "Buy Hoodie")
+                    R.id.action_shoes -> d("yasalam", "Buy shoes")
                 }
                 true
             }
@@ -63,11 +67,10 @@ class MainActivity : AppCompatActivity() {
             }
 
 
-
         }
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
             drawerLayout.openDrawer(GravityCompat.START)
             return true
-           // return super.onOptionsItemSelected(item)
+            // return super.onOptionsItemSelected(item)
         }
     }
