@@ -37,37 +37,47 @@ class MainActivity : AppCompatActivity() {
                 uiThread {
                     d("daniel", "products size? ${products.size} ${products[0].title}")
                 }
+            }
 
 
-                supportFragmentManager.beginTransaction().replace(R.id.frameLayout,MainFragment()).commit()
+                supportFragmentManager.beginTransaction().replace(R.id.frameLayout, MainFragment())
+                    .commit()
 
-            navigationView.setNavigationItemSelectedListener {
-                it.isChecked=true
-                drawerLayout.closeDrawers()
-                when (it.itemId){
-                    R.id.action_home->{supportFragmentManager.beginTransaction().replace(R.id.frameLayout,MainFragment()).commit()
+                navigationView.setNavigationItemSelectedListener {
+                    it.isChecked = true
+                    drawerLayout.closeDrawers()
+                    when (it.itemId) {
+                        R.id.action_home -> {
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.frameLayout, MainFragment()).commit()
+                        }
+
+                        R.id.action_jeans -> {
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.frameLayout, JeansFragment()).commit()
+
+                        }
+                        R.id.action_hoodie -> d("yasalam", "Buy Hoodie")
+                        R.id.action_shoes -> d("yasalam", "Buy shoes")
+                        R.id.action_settings ->{
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.frameLayout, AdminFragment()).commit()
+
+                        }
+
                     }
-
-                    R.id.action_jeans-> {
-                        supportFragmentManager.beginTransaction().replace(R.id.frameLayout,JeansFragment()).commit()
-
-                    }
-                    R.id.action_hoodie->d("yasalam","Buy Hoodie")
-                    R.id.action_shoes->d("yasalam","Buy shoes")
+                    true
                 }
-                true
+                supportActionBar?.apply {
+                    setDisplayHomeAsUpEnabled(true)
+                    setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
+                }
+
+
             }
-            supportActionBar?.apply {
-                setDisplayHomeAsUpEnabled(true)
-                setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24)
+            override fun onOptionsItemSelected(item: MenuItem): Boolean {
+                drawerLayout.openDrawer(GravityCompat.START)
+                return true
+                // return super.onOptionsItemSelected(item)
             }
-
-
-
         }
-        override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            drawerLayout.openDrawer(GravityCompat.START)
-            return true
-           // return super.onOptionsItemSelected(item)
-        }
-    }
