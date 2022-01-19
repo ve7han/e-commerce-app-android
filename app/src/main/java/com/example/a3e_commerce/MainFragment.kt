@@ -29,17 +29,17 @@ class MainFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
-       // doAsync {
-           //     val json = URL("https://api.jsonbin.io/b/61e71796ba87c130e3eab26e").readText()
-          //  uiThread {
-          //      val products = Gson().fromJson(json,Array<Product>::class.java).toList()
-          //      root.recycler_view.apply {
-           //         layoutManager= GridLayoutManager(activity,2)
-             //       adapter= ProductAdapter(products)
-               //     root.progressBar.visibility = View.GONE
-             //   }
-            //}
-       // }
+        /*doAsync {
+                val json = URL("https://api.jsonbin.io/b/61e71796ba87c130e3eab26e").readText()
+            uiThread {
+                val products = Gson().fromJson(json,Array<Product>::class.java).toList()
+               root.recycler_view.apply {
+                    layoutManager= GridLayoutManager(activity,2)
+                    adapter= ProductAdapter(products)
+                    root.progressBar.visibility = View.GONE
+                }
+            }
+       }*/
         doAsync {
 
             val db = Room.databaseBuilder(

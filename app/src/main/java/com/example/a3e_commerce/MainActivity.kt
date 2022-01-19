@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             db.productDao().insertAll(ProductDatabase(null, "Sriwil ", 20.00))
             val products = db.productDao().getAll()
             uiThread {
-                d("daniel", "products size? ${products.size} ${products[0].title}")
+                d("yasalam", "products size? ${products.size} ${products[0].title}")
             }
         }
 

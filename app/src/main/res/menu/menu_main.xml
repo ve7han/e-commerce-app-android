@@ -46,7 +46,7 @@
         <item
             android:id="@+id/action_admin"
             android:orderInCategory="100"
-            android:icon="@drawable/ic_baseline_admin_24"
+            android:icon="@drawable/ic_baseline_person_add_24"
             android:title="Admin"
             app:showAsAction="never" />
 
