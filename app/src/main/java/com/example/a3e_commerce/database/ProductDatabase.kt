@@ -10,7 +10,7 @@ data class ProductDatabase (
 
     @ColumnInfo val title: String,
 
-    @ColumnInfo val price: Double
+    @ColumnInfo val price: Double,
 
         )
 
