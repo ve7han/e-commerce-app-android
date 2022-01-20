@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         doAsync {
 
             val db = Room.databaseBuilder(
-                applicationContext,
+             applicationContext,
                 AppDatabase::class.java, "database-name"
             ).build()
 

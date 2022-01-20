@@ -46,8 +46,8 @@ class MainFragment: Fragment() {
             activity!!.applicationContext,
                 AppDatabase::class.java, "database-name"
             ).build()
-            val productsFrmdatabase = db.productDao().getAll()
-            val products = productsFrmdatabase.map{
+            val productsFromdatabase = db.productDao().getAll()
+            val products = productsFromdatabase.map{
                 Product(
                     it.title,
                 "https://image1.superdry.com/static/images/optimised/zoom/upload9223368955665535834.jpg",
@@ -65,7 +65,7 @@ class MainFragment: Fragment() {
             }
         }
 
-      //  root.progressBar.visibility = View.GONE
+        root.progressBar.visibility = View.GONE
         val categories = listOf("Hoodies","Jeans","Shoes","Socks","Big Mick","Sandawitchi Jambo","Btata 40 X2")
         root.categoriesRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity,RecyclerView.HORIZONTAL,false)
