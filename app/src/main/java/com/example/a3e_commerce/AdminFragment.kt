@@ -16,19 +16,16 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 
 class AdminFragment: Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.admin_fragment, container, false)
     }
 
     @SuppressLint("UseRequireInsteadOfGet")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        submitButton.setOnClickListener {
-            d("daniel", "button pressed :)")
+                submitButton.setOnClickListener {
+                    val title = Producttitle.text
+            d("daniel", "button pressed :) with text of $title")
 
             doAsync {
 
