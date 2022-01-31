@@ -5,17 +5,13 @@ import android.os.Bundle
 import android.util.Log.d
 import android.view.Menu
 import android.view.MenuItem
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
+import com.example.a3e_commerce.cart.cartActivity
 import com.example.a3e_commerce.database.AppDatabase
 import com.example.a3e_commerce.database.ProductDatabase
-import com.example.a3e_commerce.model.Product
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
@@ -75,7 +71,9 @@ class MainActivity : AppCompatActivity() {
 
         }
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
-            if (item?.itemId == R.id.actionCart) {
+            if (item.itemId == R.id.actionCart) {
+                d("daniel", "going to cart")
+                startActivity(Intent(this, cartActivity::class.java))
                 return true
             }
             drawerLayout.openDrawer(GravityCompat.START)
@@ -83,11 +81,11 @@ class MainActivity : AppCompatActivity() {
 
         }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_toolbar, menu)
+        menuInflater.inflate(R.menu.menu_toolbar,menu)
         return true
     }
 
-    }
+}
 
 
 
