@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                 AppDatabase::class.java, "database-name"
             ).build()
 
-            db.productDao().insertAll(ProductDatabase(null, "Sriwil ", 20.00))
+            db.productDao().insertAll(ProductDatabase(null, "Jeans", 20.00))
             val products = db.productDao().getAll()
             uiThread {
                 d("yasalam", "products size? ${products.size} ${products[0].title}")
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
             if (item.itemId == R.id.actionCart) {
-                d("daniel", "going to cart")
+
                 startActivity(Intent(this, cartActivity::class.java))
                 return true
             }
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar,menu)
         return true
-    }
+        }
 
 }
 

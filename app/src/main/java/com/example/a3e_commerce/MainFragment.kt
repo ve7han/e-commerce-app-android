@@ -22,12 +22,23 @@ import org.jetbrains.anko.uiThread
 import java.net.URL
 
 class MainFragment: Fragment() {
-    @SuppressLint("UseRequireInsteadOfGet")
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
+    override fun onCreateView (inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_main, container, false)
 
+        doAsync {
+            val json = URL("https://api.jsonbin.io/b/61fc560af77b236211eaa191").readText()
+            uiThread {
+                val products = Gson().fromJson(json, Array<Product>::class.java).toList()
+                root.recycler_view.apply {
+                    layoutManager = androidx.recyclerview.widget.GridLayoutManager(activity, 2)
+                    adapter = ProductAdapter(products)
+                    root.progressBar.visibility = View.GONE
+                }
+            }
+        }
 
-        val categories = listOf("Hoodies","Jeans","Shoes","Socks","Big Mick","Sandawitchi Jambo","Btata 40 X2")
+    @SuppressLint("UseRequireInsteadOfGet")
+        val categories = listOf("Hoodies","Jeans","Shoes","Socks","Shirts","Socks","Hats")
         root.categoriesRecyclerView.apply {
             layoutManager = LinearLayoutManager(activity,RecyclerView.HORIZONTAL,false)
             adapter = CategoriesAdapter(categories)

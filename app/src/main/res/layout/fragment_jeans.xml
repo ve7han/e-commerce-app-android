@@ -11,7 +11,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aji t9eda sriwlat lhamza!"
+        android:text="You can buy jeans here!"
         android:textColor="#161616"
         android:textSize="32sp"
         tools:ignore="MissingConstraints" />
@@ -19,7 +19,7 @@
      <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click Hna!"
+        android:text="Click here!"
         app:layout_constraintTop_toBottomOf="@id/title"
          tools:ignore="MissingConstraints" />
 

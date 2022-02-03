@@ -19,7 +19,7 @@ class ProductDetails: AppCompatActivity() {
 
         availability.setOnClickListener {
             AlertDialog.Builder(this)
-                .setMessage("Sup, $title Kayna a DADA")
+                .setMessage("Sup, $title Is available")
                 .setPositiveButton("OK") { p0, p1 ->
 
                 }
